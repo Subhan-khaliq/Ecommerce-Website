@@ -6,10 +6,11 @@ default: &default
   public_root_path: public
   public_output_path: packs
   cache_path: tmp/cache/webpacker
-  webpack_compile_output: true
-  resolved_paths: ['app/javascript/images', 'app/assets/images']
+  check_yarn_integrity: false
+  webpack_compile_output: false
 
-
+  # webpack_compile_output: true
+  resolved_paths: ["app/webpack/images"]
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
   additional_paths: []
