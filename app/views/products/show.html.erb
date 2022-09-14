@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Serial number:</strong>
+  <%= @product.serial_number %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+<p>
+  <% (0...@product.images.count).each do |image|%>
+
+    <%= image_tag(@product.thumbnail(image))%>
+
+  <%end%>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @product.quantity %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @product.user_id %>
+</p>
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= button_to 'Destroy', product_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', products_path %>
