@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Products</h1>
+<nav class="navbar fixed-top navbar-dark bg-primary">
+  <!-- Navbar content -->
+</nav>
 
 <table>
   <thead>
@@ -22,6 +23,7 @@
         <td><%= product.quantity %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
+
 
       </tr>
     <% end %>

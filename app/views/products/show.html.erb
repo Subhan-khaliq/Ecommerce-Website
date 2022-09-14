@@ -27,10 +27,7 @@
   <%= @product.quantity %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @product.user_id %>
-</p>
+<%=render partial: "comments/form", locals: {product: @product}%>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= button_to 'Destroy', product_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', products_path %>

@@ -1,0 +1,7 @@
+<%= form_for [product, Comment.new] do |f| %>
+
+  <div class="form-group">
+    <%= f.text_area :content%>
+  </div>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
