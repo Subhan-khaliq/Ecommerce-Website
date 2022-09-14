@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  attr_accessor :first_name, :last_name
 
-  attr_accessor :first_name
-  attr_accessor :last_name
   has_many :products
 
   has_one_attached :avatar
@@ -27,6 +26,4 @@ class User < ApplicationRecord
   def set_names
     self.full_name = [first_name, last_name].join(' ')
   end
-
-
 end

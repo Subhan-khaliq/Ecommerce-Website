@@ -24,15 +24,14 @@
   </div>
 
   <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div class="field">
     <%= form.label :images %>
     <%= form.file_field :images, multiple: true %>
   </div>
-
-
-  <div class="field">
-     <%= form.hidden_field :user_id, value: current_user.id %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
