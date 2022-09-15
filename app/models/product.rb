@@ -5,11 +5,15 @@ class Product < ApplicationRecord
 
   extend FriendlyId
   friendly_id :name, use: :slugged
+
   belongs_to :user, dependent: :destroy
+
   has_many :comments
+
   has_many_attached :images, dependent: :destroy
 
   validates :name, :price, presence: true
+
   validate  :image_type
 
   def image_type

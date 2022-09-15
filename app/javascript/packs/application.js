@@ -1,3 +1,5 @@
+console.log('its working')
+
 const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
 import Rails from "@rails/ujs"
@@ -14,3 +16,4 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import 'src/stylesheets/application'
+

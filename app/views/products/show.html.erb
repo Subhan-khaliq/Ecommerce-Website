@@ -27,7 +27,12 @@
   <%= @product.quantity %>
 </p>
 
-<%=render partial: "comments/form", locals: {product: @product}%>
+<p>
+  <%= render partial: "comments/comment", locals: {commentable: @product} %>
+  <%= render partial: "comments/form", review: Comment.new(product_id: @product.id)%>
+</p>
+
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= button_to 'Destroy', product_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', products_path %>
