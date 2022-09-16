@@ -28,8 +28,13 @@
 </p>
 
 <p>
-  <%= render partial: "comments/comment", locals: {commentable: @product} %>
-  <%= render partial: "comments/form", review: Comment.new(product_id: @product.id)%>
+  <div id="comments">
+    <%= render partial: "comments/comment", locals: {product: @product} %>
+  </div>
+
+  <div id="comment-form">
+    <%= render partial: "comments/form", review: Comment.new(product_id: @product.id)%>
+  </div>
 </p>
 
 

@@ -9,12 +9,14 @@ class Product < ApplicationRecord
   belongs_to :user, dependent: :destroy
 
   has_many :comments
-
+  has_many :line_items
   has_many_attached :images, dependent: :destroy
 
   validates :name, :price, presence: true
 
   validate  :image_type
+
+  scope :with_high_price, ->(price) { where('price > ?',price) }
 
   def image_type
     errors.add(:images, 'are missing!') if images.attached? == false

@@ -6,12 +6,10 @@
   </thead>
 
   <tbody>
-   <% commentable.comments.each do |comment| %>
+   <% @product.comments.each do |comment| %>
       <tr>
         <td><%= comment.content %></td>
-
-
-        <td><%= button_to 'Destroy', product_comment_url(@product, comment), method: :delete, remote: true, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Destroy', product_comment_url(@product, comment), method: :delete, remote: true, class: "remove_comment" %></td>
         <td><%= link_to 'Edit', edit_product_comment_url(@product, comment), remote: true %></td>
       </tr>
     <% end %>

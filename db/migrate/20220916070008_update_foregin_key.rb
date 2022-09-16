@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UpdateForeginKey < ActiveRecord::Migration[6.1]
   def change
     # remove the old foreign_key

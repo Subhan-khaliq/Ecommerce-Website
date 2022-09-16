@@ -4,17 +4,26 @@ class CommentsController < ApplicationController
   before_action :set_product, only: %i[create destroy edit update]
   before_action :set_comment, only: %i[edit destroy]
 
-
-
   def create
-    @comment = @product.comments.create(comment_params)
-    @comment.user_id = current_user.id
+    # @comment = @product.comments.create(comment_params.merge(user: current_user))
+    @comment = @product.comments.create(comment_params.merge(user_id: current_user.id))
+    # @comment = current_user.comments.create()
+    # @comment = Comment.create(user_id: current_user.id)
+    # @comment = Comment.create(user: current_user)
+    # @comment.user_id = current_user.id
 
-    if @comment.save
+    if @comment.persisted?
+
+      if @comment.persisted?
       respond_to do |format|
         format.js
         format.html { redirect_to @product }
       end
+
+      else
+        @comment.errors.full_messasges.join("/n")
+      end
+
     end
   end
 
