@@ -1,7 +1,8 @@
 <h3>Update Comment</h3>
-<%= form_for url: edit_product_comment_path, :remote => true do |f| %>
+<%= form_for [@product, @comment] do |f| %>
   <div class="form-group">
     <%= f.text_area :content, class: "form-control", placeholder: "Add a comment" %>
   </div>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
+

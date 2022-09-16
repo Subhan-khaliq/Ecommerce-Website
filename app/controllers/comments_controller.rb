@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[edit update]
   before_action :set_product, only: %i[create destroy edit update]
+  before_action :set_comment, only: %i[edit destroy]
+
+
 
   def create
     @comment = @product.comments.create(comment_params)
@@ -17,10 +19,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = @product.comments.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { render notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @product }
       format.js
     end
   end
@@ -28,6 +29,7 @@ class CommentsController < ApplicationController
   def edit; end
 
   def update
+    @comment = @product.comments.find(params[:id])
     @comment.update(comment_params)
     redirect_to @product
   end
