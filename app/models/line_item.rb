@@ -5,6 +5,6 @@ class LineItem < ApplicationRecord
   belongs_to :product
 
   def total_price
-    quantity.to_s.to_d * product.price.to_s.to_d
+    quantity.to_d * product.price.to_d
   end
 end
