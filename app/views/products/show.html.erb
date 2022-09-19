@@ -28,7 +28,7 @@
 </p>
 
 <p>
-  <div id="comments">
+  <div id = "comments">
     <%= render partial: "comments/comment", locals: {product: @product} %>
   </div>
 
@@ -41,3 +41,6 @@
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= button_to 'Destroy', product_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', products_path %>
+<div class="action">
+
+

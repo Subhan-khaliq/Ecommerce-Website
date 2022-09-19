@@ -62,6 +62,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Custom-added gems
 gem 'devise'
 gem 'friendly_id', '~> 5.4.0'
-gem 'image_processing'
-gem 'jquery-rails'
 gem 'mini_magick'
+gem 'mysql2',      '~> 0.4', platform: :ruby
+gem 'image_processing'
+gem 'jdbc-mysql', '~> 5.1.35', platform: :jruby
+gem 'jquery-rails'
+gem 'thinking-sphinx', '~> 5.4'

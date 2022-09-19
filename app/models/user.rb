@@ -3,8 +3,10 @@
 class User < ApplicationRecord
   attr_accessor :first_name, :last_name
 
-  has_many :products
   has_many :comments
+  has_many :orders, dependent: :destroy
+  has_many :products
+
   has_one_attached :avatar
 
   before_validation :set_names

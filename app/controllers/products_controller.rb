@@ -5,12 +5,10 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.with_high_price(400)
-    @line_item = current_order.line_items.new
   end
 
   def show
-    @commentable = @product
-    @comments = @commentable.comments
+    @comments = @product.comments
     @comment = Comment.new
   end
 

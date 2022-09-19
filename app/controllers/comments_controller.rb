@@ -2,26 +2,20 @@
 
 class CommentsController < ApplicationController
   before_action :set_product, only: %i[create destroy edit update]
-  before_action :set_comment, only: %i[edit destroy]
+  before_action :set_comment, only: %i[edit destroy update]
 
   def create
-    # @comment = @product.comments.create(comment_params.merge(user: current_user))
     @comment = @product.comments.create(comment_params.merge(user_id: current_user.id))
-    # @comment = current_user.comments.create()
-    # @comment = Comment.create(user_id: current_user.id)
-    # @comment = Comment.create(user: current_user)
-    # @comment.user_id = current_user.id
-
     if @comment.persisted?
 
       if @comment.persisted?
-      respond_to do |format|
-        format.js
-        format.html { redirect_to @product }
-      end
+        respond_to do |format|
+          format.js
+          format.html { redirect_to @product }
+        end
 
       else
-        @comment.errors.full_messasges.join("/n")
+        @comment.errors.full_messasges.join('/n')
       end
 
     end
@@ -35,12 +29,25 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    respond_to do |format|
+      format.js
+    end
+  end
 
   def update
-    @comment = @product.comments.find(params[:id])
-    @comment.update(comment_params)
-    redirect_to @product
+    if @comment.user_id == current_user.id
+      if @comment.update(comment_params)
+        respond_to do |format|
+          format.html { redirect_to @product }
+          format.js
+        end
+      else
+        flash[:alert] = 'Something worng, try again'
+        redirect_to @product
+
+      end
+    end
   end
 
   private

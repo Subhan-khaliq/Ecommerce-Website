@@ -7,7 +7,6 @@ class CreateLineItems < ActiveRecord::Migration[6.1]
       t.integer :product_id
       t.integer :cart_id
       t.integer :order_id
-
       t.timestamps
     end
   end
