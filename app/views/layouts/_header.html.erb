@@ -1,0 +1,21 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+        <li><%= link_to root_path do %>
+          <i class="glyphicon glyphicon-home"></i>
+          Home
+        <% end %>
+      </li>
+
+      <!-- Cart -->
+      <li><%= link_to cart_path(@current_cart) do %>
+        My Cart
+        <span class="badge ">
+          <i class="fa fa-cart-plus" style="color:#FFD700; font-size:20px"></i>
+
+          <i id="total_cart_items_badge">(<%= @current_cart.line_items.count %>)</i>
+        </span>
+
+    </li>
+
+<% end %>

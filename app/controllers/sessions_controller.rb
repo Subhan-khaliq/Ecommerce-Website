@@ -20,25 +20,4 @@ class SessionsController < ApplicationController
   end
 
   def logout; end
-
-  private
-
-  def authenticated?(user)
-    user&.authenticate(params[:session][:password])
-  end
-
-  def perform_authenticated_action(user)
-    if user.activated?
-      log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-
-      # redirect_back_or user
-      redirect_back_or root_url
-    else
-      message = 'Account not activated. '
-      message += 'Check your email for the activation link.'
-      flash[:warning] = message
-      redirect_to root_url
-    end
-  end
 end

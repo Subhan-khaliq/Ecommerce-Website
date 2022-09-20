@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = @current_cart.id
   end
 
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[email first_name last_name encrypted_password avatar])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[email first_name last_name encrypted_password avatar])

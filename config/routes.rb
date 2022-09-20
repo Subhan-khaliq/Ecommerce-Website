@@ -20,8 +20,9 @@ Rails.application.routes.draw do
   delete 'carts/:id' => 'carts#destroy'
   delete 'line_items/:id' => 'line_items#destroy'
 
-  post   '/login',   to: 'sessions#create'
+  post   '/login', to: 'sessions#create'
   post 'line_items/:id/add' => 'line_items#add_quantity', as: 'line_item_add'
   post 'line_items/:id/reduce' => 'line_items#reduce_quantity', as: 'line_item_reduce'
   post 'line_items' => 'line_items#create'
+  post 'orders/:id' => 'orders#apply_coupons', as: 'apply_coupon'
 end

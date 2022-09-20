@@ -1,0 +1,11 @@
+<div class="center jumbotron">
+<%= render 'order' , :order => @order%>
+ <h3>Coupons</h3>
+ <%= form_for apply_coupon_url do |f| %>
+  <div class="form-group">
+    <%= f.text_field :code, class: "form-control", placeholder: "Add Promo Code" %>
+  </div>
+  <%= f.submit "Apply" %>
+<% end %>
+</div>
+

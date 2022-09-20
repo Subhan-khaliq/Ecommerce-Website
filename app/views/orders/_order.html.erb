@@ -1,15 +1,15 @@
 <h3>
-  <%= link_to ( gravatar_for User.find_by(id:order.user_id), size: 100 ) , User.find_by(id:order.user_id) %>
   Order ID
   <%= order.id %>
   , User ID
   <%= order.user_id %></h3>
 <p>
   <strong>Name:</strong>
-  <%= User.find_by(id:order.user_id).name %>
+  <%= User.find_by(id:order.user_id).full_name %>
 <p>
   <h3>Total price:
     <%= number_to_currency(order.sub_total) %></h3>
+    <% print(order.sub_total) %>
 </p>
 
 <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#<%= order.id %>">Show Items</button>
