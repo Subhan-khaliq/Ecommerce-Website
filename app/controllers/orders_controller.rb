@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
+  attr_accessor :code
+
   def index
     @orders = Order.all
   end
@@ -45,17 +47,11 @@ class OrdersController < ApplicationController
   end
 
   def apply_coupons
-    @coupon = Coupon.find_by(params[:code])
-
+    @coupon = Coupon.find_by(code: params[:code])
     @order = Order.find(params[:id])
     after_discount = @order.sub_total - percent_of(@coupon.discount, @order.sub_total)
     @order.update(sub_total: after_discount)
     redirect_back(fallback_location: @order)
-  end
-
-  def percent_of(percent, number)
-    percentage = percent * 100.0
-    percentage.to_d / 100.0 * number
   end
 
   private
@@ -69,12 +65,17 @@ class OrdersController < ApplicationController
     end
   end
 
+  def percent_of(percent, number)
+    percentage = percent * 100.0
+    percentage.to_d / 100.0 * number
+  end
+
   def reset_sessions_cart
     Cart.destroy(session[:cart_id])
     session[:cart_id] = nil
   end
 
   def order_params
-    params.require(:order).permit(:user_id, :sub_total)
+    params.require(:order).permit(:user_id, :sub_total, :code)
   end
 end

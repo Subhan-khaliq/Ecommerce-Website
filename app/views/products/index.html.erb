@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
-<nav class="navbar fixed-top navbar-dark bg-primary">
-  <!-- Navbar content -->
-</nav>
-
+<%= form_tag products_path, :method => :get do %>
+  <h1>Search for a Product</h1>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -22,20 +23,20 @@
         <td><%= product.price %></td>
         <td><%= product.quantity %></td>
         <td><% if !@current_cart.products.include?(product) %>
-                <%=button_to line_items_path(:product_id => product.id), class: "btn btn-warning" , style: "margin-top:15px;" , params:{productID: product.id} do %>
+                <%=button_to line_items_path(product_id: product.id), class: "btn btn-warning" , style: "margin-top:15px;" , params:{productID: product.id} do %>
                 <i class="glyphicon glyphicon-plus" style="color:black;"></i>
                 Add to Cart
               <% end %>
 
               <%else %>
                 <ul class="users">
-                  <%=link_to line_item_reduce_path(:id =>@current_cart.line_items.find_by(product_id: product.id)) , method: :post, remote: true, class: "btn btn-danger" , style: "margin-top:15px;" do %>
+                  <%=link_to line_item_reduce_path(id: @current_cart.line_items.find_by(product_id: product.id)) , method: :post, remote: true, class: "btn btn-danger" , style: "margin-top:15px;" do %>
                   <i class="glyphicon glyphicon-minus" style="color:black;"></i>
                   Reduce
                 <% end %>
 
                 <!-- add -->
-                <%=link_to line_item_add_path(:id => @current_cart.line_items.find_by(product_id: product.id)) , method: :post, remote: true, class: "btn btn-success" , style: "margin-top:15px;" do %>
+                <%=link_to line_item_add_path(id: @current_cart.line_items.find_by(product_id: product.id)) , method: :post, remote: true, class: "btn btn-success" , style: "margin-top:15px;" do %>
                 <i class="glyphicon glyphicon-plus" style="color:black;"></i>
                 Add
               <% end %>

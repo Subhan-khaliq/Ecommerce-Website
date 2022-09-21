@@ -1,6 +1,6 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar fixed-top-fixed navbar">
         <li><%= link_to root_path do %>
           <i class="glyphicon glyphicon-home"></i>
           Home
@@ -15,7 +15,8 @@
 
           <i id="total_cart_items_badge">(<%= @current_cart.line_items.count %>)</i>
         </span>
-
-    </li>
-
 <% end %>
+    </li>
+</nav>
+
+

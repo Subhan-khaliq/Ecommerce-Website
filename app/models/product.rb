@@ -7,7 +7,6 @@ class Product < ApplicationRecord
   friendly_id :name, use: :slugged
 
   belongs_to :user, dependent: :destroy
-  belongs_to :cart
 
   has_many :comments
 
