@@ -5,7 +5,7 @@
   </p>
   <ul class="users">
     <% @cart.line_items.each do |line_item| %>
-      <%= render 'shared/product' , :product => line_item.product %>
+      <%= render 'shared/product' , product: line_item.product %>
       <li>Quantity:
         <%= line_item.quantity %>
         | Total Price:

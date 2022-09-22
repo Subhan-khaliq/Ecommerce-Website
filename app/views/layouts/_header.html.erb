@@ -1,22 +1,35 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- Navigation -->
-<nav class="navbar fixed-top-fixed navbar">
-        <li><%= link_to root_path do %>
-          <i class="glyphicon glyphicon-home"></i>
-          Home
-        <% end %>
-      </li>
 
-      <!-- Cart -->
-      <li><%= link_to cart_path(@current_cart) do %>
-        My Cart
-        <span class="badge ">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href='<%= root_path %>'>Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    <li>
+      <a class="navbar-brand" href='<%= orders_path %>'>My Orders</a>
+      <a class="navbar-brand" href='<%= cart_path(@current_cart) %>'>My Cart</a>
           <i class="fa fa-cart-plus" style="color:#FFD700; font-size:20px"></i>
-
-          <i id="total_cart_items_badge">(<%= @current_cart.line_items.count %>)</i>
-        </span>
-<% end %>
+          <i style="color:#FFD700;">(<%= @current_cart.line_items.count %>)</i>
     </li>
+    </ul>
+    <ul>
+     <li><%= link_to "Sign out", destroy_user_session_path, method: :delete ,class: "btn btn-sm btn-block btn-warning text-uppercase"%></li>
+    </ul>
+      <%= form_tag products_path, method: :get do %>
+        <div class="form-group">
+          <%= text_field_tag :search %>
+          <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
+        </div>
+      <% end %>
+
+
+  </div>
 </nav>
+
+
 
 

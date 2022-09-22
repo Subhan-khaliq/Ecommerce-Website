@@ -4,17 +4,6 @@ module Users
   class SessionsController < Devise::SessionsController
     before_action :configure_sign_in_params, only: [:create]
 
-    # GET /resource/sign_in
-
-    # POST /resource/sign_in
-
-    # DELETE /resource/sign_out
-    # def destroy
-    #   User.find(session[:user_id]).destroy
-    #   session[:user_id] = nil
-    #   redirect_to root_path
-    # end
-
     protected
 
     # If you have extra params to permit, append them to the sanitizer.

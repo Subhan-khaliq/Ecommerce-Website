@@ -4,7 +4,8 @@
   <div id="login-row" class="row justify-content-center align-items-center">
     <div id="login-column" class="col-md-6">
       <div id="login-box" class="col-md-12">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+        <%= form_with model: @user,  url: registration_path(resource_name) do |f| %>
             <%= render "users/shared/error_messages", resource: resource %>
             <div class="field">
              <% if resource.avatar.attached? %>
@@ -12,6 +13,10 @@
              <% else %>
               <%= image_pack_tag("media/images/default_image.jpg") %>
              <% end %>
+            </div>
+            <div class="field">
+            <%= f.label 'Role'%>
+            <%= f.collection_check_boxes(:role_ids, Role.all, :id, :name) %>
             </div>
             <div class="field">
             <%= f.label :first_name, 'First Name' %>
@@ -37,6 +42,7 @@
             <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
           </div>
+
           <div class="actions">
             <%= f.submit "Sign up", class: 'btn btn-lg btn-primary btn-block'%>
           </div>

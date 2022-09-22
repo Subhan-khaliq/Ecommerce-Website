@@ -1,0 +1,375 @@
+warning: LF will be replaced by CRLF in app/controllers/users/sessions_controller.rb.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/helpers/sessions_helper.rb.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/views/products/index.html.erb.
+The file will have its original line endings in your working directory
+[1mdiff --git a/app/controllers/users/omniauth_callbacks_controller.rb b/app/controllers/users/omniauth_callbacks_controller.rb[m
+[1mdeleted file mode 100644[m
+[1mindex 1006dbb..0000000[m
+[1m--- a/app/controllers/users/omniauth_callbacks_controller.rb[m
+[1m+++ /dev/null[m
+[36m@@ -1,32 +0,0 @@[m
+[31m-# frozen_string_literal: true[m
+[31m-[m
+[31m-module Users[m
+[31m-  class OmniauthCallbacksController < Devise::OmniauthCallbacksController[m
+[31m-    # You should configure your model like this:[m
+[31m-    # devise :omniauthable, omniauth_providers: [:twitter][m
+[31m-[m
+[31m-    # You should also create an action method in this controller like this:[m
+[31m-    # def twitter[m
+[31m-    # end[m
+[31m-[m
+[31m-    # More info at:[m
+[31m-    # https://github.com/heartcombo/devise#omniauth[m
+[31m-[m
+[31m-    # GET|POST /resource/auth/twitter[m
+[31m-    # def passthru[m
+[31m-    #   super[m
+[31m-    # end[m
+[31m-[m
+[31m-    # GET|POST /users/auth/twitter/callback[m
+[31m-    # def failure[m
+[31m-    #   super[m
+[31m-    # end[m
+[31m-[m
+[31m-    # protected[m
+[31m-[m
+[31m-    # The path used when OmniAuth fails[m
+[31m-    # def after_omniauth_failure_path_for(scope)[m
+[31m-    #   super(scope)[m
+[31m-    # end[m
+[31m-  end[m
+[31m-end[m
+[1mdiff --git a/app/controllers/users/sessions_controller.rb b/app/controllers/users/sessions_controller.rb[m
+[1mindex b411e4a..bfe6bd8 100644[m
+[1m--- a/app/controllers/users/sessions_controller.rb[m
+[1m+++ b/app/controllers/users/sessions_controller.rb[m
+[36m@@ -4,17 +4,6 @@[m [mmodule Users[m
+   class SessionsController < Devise::SessionsController[m
+     before_action :configure_sign_in_params, only: [:create][m
+ [m
+[31m-    # GET /resource/sign_in[m
+[31m-[m
+[31m-    # POST /resource/sign_in[m
+[31m-[m
+[31m-    # DELETE /resource/sign_out[m
+[31m-    # def destroy[m
+[31m-    #   User.find(session[:user_id]).destroy[m
+[31m-    #   session[:user_id] = nil[m
+[31m-    #   redirect_to root_path[m
+[31m-    # end[m
+[31m-[m
+     protected[m
+ [m
+     # If you have extra params to permit, append them to the sanitizer.[m
+[1mdiff --git a/app/helpers/application_helper.rb b/app/helpers/application_helper.rb[m
+[1mdeleted file mode 100644[m
+[1mindex 15b06f0..0000000[m
+[1m--- a/app/helpers/application_helper.rb[m
+[1m+++ /dev/null[m
+[36m@@ -1,4 +0,0 @@[m
+[31m-# frozen_string_literal: true[m
+[31m-[m
+[31m-module ApplicationHelper[m
+[31m-end[m
+[1mdiff --git a/app/helpers/carts_helper.rb b/app/helpers/carts_helper.rb[m
+[1mdeleted file mode 100644[m
+[1mindex b9eff0b..0000000[m
+[1m--- a/app/helpers/carts_helper.rb[m
+[1m+++ /dev/null[m
+[36m@@ -1,4 +0,0 @@[m
+[31m-# frozen_string_literal: true[m
+[31m-[m
+[31m-module CartsHelper[m
+[31m-end[m
+[1mdiff --git a/app/helpers/charges_helper.rb b/app/helpers/charges_helper.rb[m
+[1mdeleted file mode 100644[m
+[1mindex bf9a183..0000000[m
+[1m--- a/app/helpers/charges_helper.rb[m
+[1m+++ /dev/null[m
+[36m@@ -1,4 +0,0 @@[m
+[31m-# frozen_string_literal: true[m
+[31m-[m
+[31m-module ChargesHelper[m
+[31m-end[m
+[1mdiff --git a/app/helpers/line_items_helper.rb b/app/helpers/line_items_helper.rb[m
+[1mdeleted file mode 100644[m
+[1mindex e136792..0000000[m
+[1m--- a/app/helpers/line_items_helper.rb[m
+[1m+++ /dev/null[m
+[36m@@ -1,4 +0,0 @@[m
+[31m-# frozen_string_literal: true[m
+[31m-[m
+[31m-module LineItemsHelper[m
+[31m-end[m
+[1mdiff --git a/app/helpers/orders_helper.rb b/app/helpers/orders_helper.rb[m
+[1mdeleted file mode 100644[m
+[1mindex 66ec35d..0000000[m
+[1m--- a/app/helpers/orders_helper.rb[m
+[1m+++ /dev/null[m
+[36m@@ -1,4 +0,0 @@[m
+[31m-# frozen_string_literal: true[m
+[31m-[m
+[31m-module OrdersHelper[m
+[31m-end[m
+[1mdiff --git a/app/helpers/sessions_helper.rb b/app/helpers/sessions_helper.rb[m
+[1mindex 7244286..5126261 100644[m
+[1m--- a/app/helpers/sessions_helper.rb[m
+[1m+++ b/app/helpers/sessions_helper.rb[m
+[36m@@ -1,36 +1,7 @@[m
+ # frozen_string_literal: true[m
+ [m
+ module SessionsHelper[m
+[31m-  def log_in(user)[m
+[31m-    session[:user_id] = user.id[m
+[31m-  end[m
+[31m-[m
+[31m-  # Remembers a user in a persistent session.[m
+[31m-  def remember(user)[m
+[31m-    user.remember[m
+[31m-    cookies.permanent.signed[:user_id] = user.id[m
+[31m-    cookies.permanent[:remember_token] = user.remember_token[m
+[31m-  end[m
+[31m-[m
+[31m-  # Returns true if the given user is the current user.[m
+[31m-  def current_user?(user)[m
+[31m-    user == current_user[m
+[31m-  end[m
+[31m-[m
+[31m-  # Returns the current logged-in user (if any).[m
+[31m-  def current_user[m
+[31m-    if (user_id = session[:user_id])[m
+[31m-      @current_user ||= User.find_by(id: user_id)[m
+[31m-    elsif (user_id = cookies.signed[:user_id])[m
+[31m-      user = User.find_by(id: user_id)[m
+[31m-      log_in user[m
+[31m-      @current_user = user[m
+[31m-    end[m
+[31m-  end[m
+[31m-[m
+[31m-  # Returns true if the user is logged in, false otherwise.[m
+   def logged_in?[m
+[31m-    !@current_user.nil?[m
+[32m+[m[32m    !current_user.nil?[m
+   end[m
+[31m-[m
+ end[m
+[1mdiff --git a/app/views/layouts/_header.html.erb b/app/views/layouts/_header.html.erb[m
+[1mindex 9733252..6deca7d 100644[m
+[1m--- a/app/views/layouts/_header.html.erb[m
+[1m+++ b/app/views/layouts/_header.html.erb[m
+[36m@@ -1,22 +1,35 @@[m
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">[m
+ <!-- Navigation -->[m
+[31m-<nav class="navbar fixed-top-fixed navbar">[m
+[31m-        <li><%= link_to root_path do %>[m
+[31m-          <i class="glyphicon glyphicon-home"></i>[m
+[31m-          Home[m
+[31m-        <% end %>[m
+[31m-      </li>[m
+[31m-[m
+[31m-      <!-- Cart -->[m
+[31m-      <li><%= link_to cart_path(@current_cart) do %>[m
+[31m-        My Cart[m
+[31m-        <span class="badge ">[m
+[31m-          <i class="fa fa-cart-plus" style="color:#FFD700; font-size:20px"></i>[m
+ [m
+[31m-          <i id="total_cart_items_badge">(<%= @current_cart.line_items.count %>)</i>[m
+[31m-        </span>[m
+[31m-<% end %>[m
+[32m+[m[32m<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">[m
+[32m+[m[32m  <a class="navbar-brand" href='<%= root_path %>'>Home</a>[m
+[32m+[m[32m  <button class="navbar-toggler" type="button" data-toggle="collapse" >[m
+[32m+[m[32m    <span class="navbar-toggler-icon"></span>[m
+[32m+[m[32m  </button>[m
+[32m+[m
+[32m+[m[32m  <div class="collapse navbar-collapse" id="navbarSupportedContent">[m
+[32m+[m[32m    <ul class="navbar-nav mr-auto">[m
+[32m+[m[32m    <li>[m
+[32m+[m[32m      <a class="navbar-brand" href='<%= orders_path %>'>My Orders</a>[m
+[32m+[m[32m      <a class="navbar-brand" href='<%= cart_path(@current_cart) %>'>My Cart</a>[m
+[32m+[m[32m          <i class="fa fa-cart-plus" style="color:#FFD700; font-size:20px"></i>[m
+[32m+[m[32m          <i style="color:#FFD700;">(<%= @current_cart.line_items.count %>)</i>[m
+     </li>[m
+[32m+[m[32m    </ul>[m
+[32m+[m[32m    <ul>[m
+[32m+[m[32m     <li><%= link_to "Sign out", destroy_user_session_path, method: :delete ,class: "btn btn-sm btn-block btn-warning text-uppercase"%></li>[m
+[32m+[m[32m    </ul>[m
+[32m+[m[32m      <%= form_tag products_path, method: :get do %>[m
+[32m+[m[32m        <div class="form-group">[m
+[32m+[m[32m          <%= text_field_tag :search %>[m
+[32m+[m[32m          <button class="btn btn-outline-success btn-sm" type="submit">Search</button>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m      <% end %>[m
+[32m+[m
+[32m+[m
+[32m+[m[32m  </div>[m
+ </nav>[m
+ [m
+ [m
+[41m+[m
+[41m+[m
+[1mdiff --git a/app/views/orders/new.html.erb b/app/views/orders/new.html.erb[m
+[1mindex efee6e4..bb4e225 100644[m
+[1m--- a/app/views/orders/new.html.erb[m
+[1m+++ b/app/views/orders/new.html.erb[m
+[36m@@ -20,6 +20,6 @@[m
+     <%= link_to "Please Sign in", new_user_session_path, method: :post %>[m
+   <% end %>[m
+ [m
+[31m-    <%= render 'shared/cart2' , cart: @cart %>[m
+[32m+[m[32m    <%= render 'shared/final_cart' , cart: @cart %>[m
+   <% end %>[m
+ </div>[m
+[1mdiff --git a/app/views/products/index.html.erb b/app/views/products/index.html.erb[m
+[1mindex 6f5fe32..978cb7b 100644[m
+[1m--- a/app/views/products/index.html.erb[m
+[1m+++ b/app/views/products/index.html.erb[m
+[36m@@ -1,32 +1,37 @@[m
+[31m-<p id="notice"><%= notice %></p>[m
+[31m-<%= form_tag products_path, :method => :get do %>[m
+[31m-  <h1>Search for a Product</h1>[m
+[31m-  <%= text_field_tag :search, params[:search] %>[m
+[31m-  <%= submit_tag "Search" %>[m
+[31m-<% end %>[m
+[31m-<table>[m
+[31m-  <thead>[m
+[31m-    <tr>[m
+[31m-      <th>Serial number</th>[m
+[31m-      <th>Name</th>[m
+[31m-      <th>Price</th>[m
+[31m-      <th>Quantity</th>[m
+[31m-      <th colspan="3"></th>[m
+[31m-    </tr>[m
+[31m-  </thead>[m
+[31m-[m
+[31m-  <tbody>[m
+[31m-    <% @products.each do |product| %>[m
+[31m-      <tr>[m
+[31m-        <td><%= product.serial_number %></td>[m
+[31m-        <td><%= product.name %></td>[m
+[31m-        <td><%= product.price %></td>[m
+[31m-        <td><%= product.quantity %></td>[m
+[31m-        <td><% if !@current_cart.products.include?(product) %>[m
+[32m+[m[32m<section class="jumbotron text-center">[m
+[32m+[m[32m  <div class="container">[m
+[32m+[m[32m    <h1 class="jumbotron-heading">Products</h1>[m
+[32m+[m[32m  </div>[m
+[32m+[m[32m</section>[m
+[32m+[m[32m<div class="container mb-4">[m
+[32m+[m[32m  <div class="row">[m
+[32m+[m[32m    <div class="col-12">[m
+[32m+[m[32m      <div class="table-responsive">[m
+[32m+[m[32m        <table class="table table-striped">[m
+[32m+[m[32m          <thead>[m
+[32m+[m[32m            <tr>[m
+[32m+[m[32m              <th scope="col">Serial Number</th>[m
+[32m+[m[32m              <th scope="col">Name</th>[m
+[32m+[m[32m              <th scope="col">Price</th>[m
+[32m+[m[32m              <th scope="col">Quantity</th>[m
+[32m+[m[32m              <%# <th scope="col" class="text-right">Quantity</th> %>[m
+[32m+[m[32m              <th></th>[m
+[32m+[m[32m            </tr>[m
+[32m+[m[32m          </thead>[m
+[32m+[m[32m          <tbody>[m
+[32m+[m[32m            <% @products.each do |product| %>[m
+[32m+[m[32m            <tr>[m
+[32m+[m[32m                <td><%= product.serial_number %></td>[m
+[32m+[m[32m                <td><%= product.name %></td>[m
+[32m+[m[32m                <td><%= product.price %></td>[m
+[32m+[m[32m                <td><%= product.quantity %></td>[m
+[32m+[m[32m                <td><%= link_to 'Show', product %></td>[m
+[32m+[m[32m                <td><%= link_to 'Edit', edit_product_path(product) %></td>[m
+[32m+[m[32m                <td><% if !@current_cart.products.include?(product) %>[m
+                 <%=button_to line_items_path(product_id: product.id), class: "btn btn-warning" , style: "margin-top:15px;" , params:{productID: product.id} do %>[m
+                 <i class="glyphicon glyphicon-plus" style="color:black;"></i>[m
+                 Add to Cart[m
+[31m-              <% end %>[m
+[32m+[m[32m                    <% end %>[m
+ [m
+               <%else %>[m
+                 <ul class="users">[m
+[36m@@ -52,19 +57,13 @@[m
+               | Total Price:[m
+               <%= number_to_currency(@current_cart.line_items.find_by(product_id: product.id).total_price) %>[m
+               <hr class="style18"/>[m
+[32m+[m[32m            </li>[m
+           </ul>[m
+[31m-        <%end %>[m
+[31m-      </p>[m
+[32m+[m[32m        <% end %>[m
+[32m+[m[32m      <% end %>[m
+[32m+[m[32m            <%= link_to 'New Product', new_product_path %>[m
+[32m+[m[32m            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>[m
+[32m+[m[32m      </div>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m  </div>[m
+ </div>[m
+[31m-</td>[m
+[31m-        <td><%= link_to 'Show', product %></td>[m
+[31m-        <td><%= link_to 'Edit', edit_product_path(product) %></td>[m
+[31m-[m
+[31m-    <% end %>[m
+[31m-    <%= link_to "Sign in", new_user_session_path, method: :post %>[m
+[31m-<br>[m
+[31m-<%= link_to 'New Product', new_product_path %>[m
+[31m-<%= link_to "Sign out", destroy_user_session_path, method: :delete %>[m
+[31m-[m
+[31m-[m
+[31m-[m
+[1mdiff --git a/app/views/shared/_cart2.html.erb b/app/views/shared/_cart2.html.erb[m
+[1mdeleted file mode 100644[m
+[1mindex 59988cf..0000000[m
+[1m--- a/app/views/shared/_cart2.html.erb[m
+[1m+++ /dev/null[m
+[36m@@ -1,17 +0,0 @@[m
+[31m-<div class="center jumbotron">[m
+[31m-  <p>[m
+[31m-    <h3>Total price:[m
+[31m-      <%= number_to_currency(@cart.sub_total) %></h3>[m
+[31m-  </p>[m
+[31m-  <ul class="users">[m
+[31m-    <% @cart.line_items.each do |line_item| %>[m
+[31m-      <%= render 'shared/product' , :product => line_item.product %>[m
+[31m-      <li>Quantity:[m
+[31m-        <%= line_item.quantity %>[m
+[31m-        | Total Price:[m
+[31m-        <%= number_to_currency(line_item.total_price) %>[m
+[31m-[m
+[31m-        <hr class="style18">[m
+[31m-      <% end %>[m
+[31m-  </ul>[m
+[31m-</div>[m
+[1mdiff --git a/app/views/shared/_cart_line_item.html.erb b/app/views/shared/_cart_line_item.html.erb[m
+[1mindex 9d3f1cc..5efd4c2 100644[m
+[1m--- a/app/views/shared/_cart_line_item.html.erb[m
+[1m+++ b/app/views/shared/_cart_line_item.html.erb[m
+[36m@@ -8,20 +8,18 @@[m
+ <td><%= product.name %></td>[m
+ <td>In stock</td>[m
+ <td class="text-center">[m
+[31m-  <!-- reduce -->[m
+[32m+[m
+   <%=link_to line_item_reduce_path(id: line_item) , method: :post, class: "btn btn-danger" , style: "margin-top:15px;" do %>[m
+   <i class="glyphicon glyphicon-minus" style="color:white;"></i>[m
+[32m+[m[32m  <% end %>[m
+ [m
+[31m-<% end %>[m
+[31m-<!-- add -->[m
+[31m-<%=link_to line_item_add_path(id: line_item) , method: :post , class: "btn btn-success" , style: "margin-top:15px;" do %>[m
+[31m-<i class="glyphicon glyphicon-plus" style="color:white;"></i>[m
+[31m-<% end %>[m
+[32m+[m[32m  <%=link_to line_item_add_path(id: line_item) , method: :post , class: "btn btn-success" , style: "margin-top:15px;" do %>[m
+[32m+[m[32m  <i class="glyphicon glyphicon-plus" style="color:white;"></i>[m
+[32m+[m[32m  <% end %>[m
+ </td>[m
+ <td class="text-right"><%= product.price %>[m
+[31m-$</td>[m
+[32m+[m[32m  $</td>[m
+ <td class="text-right">[m
+[31m-<!-- Remove -->[m
+ <%=link_to line_item_path(line_item) ,method: :delete ,class: "btn btn-danger", data: { confirm: 'Are you sure?' } do %>[m
+ <i class="fa fa-trash"></i>[m
+ <% end %>[m
