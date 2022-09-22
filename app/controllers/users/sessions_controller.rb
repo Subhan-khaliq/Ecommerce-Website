@@ -9,6 +9,11 @@ module Users
     # POST /resource/sign_in
 
     # DELETE /resource/sign_out
+    # def destroy
+    #   User.find(session[:user_id]).destroy
+    #   session[:user_id] = nil
+    #   redirect_to root_path
+    # end
 
     protected
 

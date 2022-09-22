@@ -55,12 +55,16 @@
           </ul>
         <%end %>
       </p>
-</div></td>
+</div>
+</td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
 
     <% end %>
+    <%= link_to "Sign in", new_user_session_path, method: :post %>
 <br>
 <%= link_to 'New Product', new_product_path %>
+<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+
 
 

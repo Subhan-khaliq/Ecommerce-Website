@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  attr_accessor :code
-
   def index
-    @orders = Order.all
+    @orders = current_user.orders.all
   end
 
   def show
