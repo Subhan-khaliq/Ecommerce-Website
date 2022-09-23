@@ -31,6 +31,10 @@
           </div>
         </div>
       </div>
+      <div class="field">
+            <%= f.label 'Role'%>
+            <%= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
+            </div>
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>

@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  resourcify
   rolify
 
   attr_accessor :first_name, :last_name
 
-  validate :must_have_a_role, on: :update
+  validate :must_have_a_role, on: :destroy
 
   has_many :comments
   has_many :orders, dependent: :destroy
   has_many :products
+
+  # belongs_to :resource, polymorphic: true
 
   has_one_attached :avatar
 
@@ -35,9 +36,6 @@ class User < ApplicationRecord
   end
 
   def must_have_a_role
-    unless roles.any?
-      errors.add(:roles, "must have at least 1 role")
-    end
+    errors.add(:roles, 'must have at least 1 role') unless roles.any?
   end
-
 end

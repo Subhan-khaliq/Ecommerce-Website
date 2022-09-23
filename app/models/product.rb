@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
+  resourcify
   after_commit :set_serial, on: :create
 
   extend FriendlyId

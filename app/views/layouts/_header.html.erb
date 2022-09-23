@@ -17,7 +17,11 @@
     </li>
     </ul>
     <ul>
-     <li><%= link_to "Sign out", destroy_user_session_path, method: :delete ,class: "btn btn-sm btn-block btn-warning text-uppercase"%></li>
+      <% if logged_in? %>
+        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete ,class: "btn btn-sm btn-block btn-warning text-uppercase"%></li>
+      <% else %>
+        <li><%= link_to "Sign in", new_user_session_path ,class: "btn btn-sm btn-block btn-warning text-uppercase"%></li>
+      <% end %>
     </ul>
       <%= form_tag products_path, method: :get do %>
         <div class="form-group">

@@ -7,17 +7,12 @@ class CommentsController < ApplicationController
   def create
     @comment = @product.comments.create(comment_params.merge(user_id: current_user.id))
     if @comment.persisted?
-
-      if @comment.persisted?
-        respond_to do |format|
-          format.js
-          format.html { redirect_to @product }
-        end
-
-      else
-        @comment.errors.full_messasges.join('/n')
+      respond_to do |format|
+        format.js
+        format.html { redirect_to @product }
       end
-
+    else
+      @comment.errors.full_messasges.join('/n')
     end
   end
 

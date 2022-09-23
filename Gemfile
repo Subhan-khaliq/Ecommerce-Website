@@ -70,3 +70,5 @@ gem 'mysql2', '~> 0.4', platform: :ruby
 gem 'rolify'
 gem 'stripe'
 gem 'thinking-sphinx', '~> 5.4'
+
+gem 'pundit', '~> 2.2'
