@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit destroy update]
 
   def create
+    authorize @comment
     @comment = @product.comments.create(comment_params.merge(user_id: current_user.id))
     if @comment.persisted?
       respond_to do |format|
