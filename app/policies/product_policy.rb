@@ -9,6 +9,6 @@ class ProductPolicy
   end
 
   def update?
-    @user.has_role? :buyer
+    @user.has_role? :seller
   end
 end

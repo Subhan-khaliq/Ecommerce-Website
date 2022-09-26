@@ -9,8 +9,8 @@
    <% @product.comments.each do |comment| %>
       <tr>
         <td id = "this_comment_<%= comment.id %>"><%= comment.content %></td>
-        <td><%= link_to 'Destroy', product_comment_url(@product, comment), method: :delete, remote: true, class: "remove_comment" %></td>
-        <td><%= link_to 'Edit', edit_product_comment_url(@product, comment), remote: true %></td>
+          <td><%= link_to 'Destroy', product_comment_url(@product, comment), method: :delete, remote: true, class: "remove_comment" %></td>
+          <td><%= link_to 'Edit', edit_product_comment_url(@product, comment), remote: true %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,7 +1,7 @@
 <div class="center jumbotron">
   <p>
     <h3>Total price:
-      <%= number_to_currency(@cart.sub_total) %></h3>
+      <%= number_to_currency(@cart.total_amount) %></h3>
   </p>
   <ul class="users">
     <% @cart.line_items.each do |line_item| %>

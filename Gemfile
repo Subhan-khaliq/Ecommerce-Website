@@ -37,6 +37,7 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
@@ -72,3 +73,4 @@ gem 'stripe'
 gem 'thinking-sphinx', '~> 5.4'
 
 gem 'pundit', '~> 2.2'
+gem "rspec-rails", group: [:development, :test]

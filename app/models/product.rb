@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
-  resourcify
-  after_commit :set_serial, on: :create
+  DEFAULT_SIZE = '300x300!'
 
   extend FriendlyId
-  friendly_id :name, use: :slugged
+
+  resourcify
 
   belongs_to :user, dependent: :destroy
 
@@ -16,11 +16,15 @@ class Product < ApplicationRecord
 
   has_many_attached :images, dependent: :destroy
 
+  friendly_id :name, use: :slugged
+
   validates :name, :price, presence: true
 
   validate  :image_type
 
   scope :with_high_price, ->(price) { where('price > ?', price) }
+
+  after_commit :set_serial, on: :create
 
   def image_type
     errors.add(:images, 'are missing!') if images.attached? == false
@@ -36,6 +40,6 @@ class Product < ApplicationRecord
   end
 
   def thumbnail(image)
-    images[image].variant(resize: '300x300!').processed
+    images[image].variant(resize: DEFAULT_SIZE).processed
   end
 end

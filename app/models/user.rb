@@ -5,15 +5,15 @@ class User < ApplicationRecord
 
   attr_accessor :first_name, :last_name
 
-  validate :must_have_a_role, on: :destroy
+  belongs_to :resource, polymorphic: true
+
+  has_one_attached :avatar
 
   has_many :comments
   has_many :orders, dependent: :destroy
   has_many :products
 
-  # belongs_to :resource, polymorphic: true
-
-  has_one_attached :avatar
+  validate :must_have_a_role, on: :destroy
 
   before_validation :set_names
 
@@ -38,4 +38,5 @@ class User < ApplicationRecord
   def must_have_a_role
     errors.add(:roles, 'must have at least 1 role') unless roles.any?
   end
+
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentPolicy
   attr_reader :user, :comment
 
@@ -7,6 +9,6 @@ class CommentPolicy
   end
 
   def create?
-    @user.has_role? :buyer
+    @user.has_role?
   end
 end

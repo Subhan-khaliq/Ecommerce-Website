@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.user_id == current_user.id
+    if @comment.is_writer?
       if @comment.update(comment_params)
         respond_to do |format|
           format.html { redirect_to @product }

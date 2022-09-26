@@ -1,13 +1,11 @@
 <div class="center jumbotron">
 <%= render 'order', order: @order %>
- <h3>Coupons</h3>
- <%= form_with url: apply_coupon_path(@order) do |f| %>
-  <div class="form-group">
-    <%= f.text_field :code, class: "form-control", placeholder: "Add Promo Code" %>
-  </div>
-  <%= f.submit "Apply" %>
+<h3>Coupons</h3>
+<%= form_tag(apply_coupon_path(@order)) do %>
+   <%= label_tag(:x, "Add Promo Code") %>
+   <%= text_field_tag(:x) %>
+   <%= submit_tag("Apply") %>
 <% end %>
 <%= link_to 'Payment', new_charge_path %>
-
 </div>
 
