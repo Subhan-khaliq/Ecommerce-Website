@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit destroy update]
 
   def create
-    authorize @comment
+    # authorize @comment
     @comment = @product.comments.create(comment_params.merge(user_id: current_user.id))
     if @comment.persisted?
       respond_to do |format|
@@ -32,17 +32,14 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.is_writer?
-      if @comment.update(comment_params)
-        respond_to do |format|
-          format.html { redirect_to @product }
-          format.js
-        end
-      else
-        flash[:alert] = 'Something worng, try again'
-        redirect_to @product
-
+    if @comment.update(comment_params)
+      respond_to do |format|
+        format.html { redirect_to @product }
+        format.js
       end
+    else
+      flash[:alert] = 'Something worng, try again'
+      redirect_to @product
     end
   end
 

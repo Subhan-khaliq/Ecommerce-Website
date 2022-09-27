@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Calculatable
   extend ActiveSupport::Concern
 
@@ -10,5 +12,4 @@ module Calculatable
       sum
     end
   end
-
 end

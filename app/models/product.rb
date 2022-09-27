@@ -22,7 +22,7 @@ class Product < ApplicationRecord
 
   validate  :image_type
 
-  scope :with_high_price, ->(price) { where('price > ?', price) }
+  # scope :with_high_price, ->(price) { where('price > ?', price) }
 
   after_commit :set_serial, on: :create
 

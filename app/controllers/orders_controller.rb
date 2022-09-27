@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new
-    authorize @order
+    # authorize @order
     @order.update(user_id: current_user.id)
     add_line_items_to_order
     @order.sub_total = @current_cart.total_amount

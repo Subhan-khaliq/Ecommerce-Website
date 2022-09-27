@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  Image_Size = '150x150!'
+
   rolify
 
   attr_accessor :first_name, :last_name
@@ -22,11 +24,15 @@ class User < ApplicationRecord
 
   def avatar_thumbnail
     if avatar.attached?
-      avatar.variant(resize: '150x150!').processed
+      avatar.variant(resize: Image_Size).processed
 
     else
       '/default_image.jpg'
     end
+  end
+
+  def is_writer?(user_id, owner_id)
+    return true if user_id == owner_id
   end
 
   private
@@ -38,5 +44,4 @@ class User < ApplicationRecord
   def must_have_a_role
     errors.add(:roles, 'must have at least 1 role') unless roles.any?
   end
-
 end

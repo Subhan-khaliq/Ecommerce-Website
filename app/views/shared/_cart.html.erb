@@ -21,7 +21,7 @@
           </thead>
           <tbody>
             <% @cart.line_items.each do |line_item| %>
-              <%= render 'shared/cart_line_item' , :product => line_item.product , :line_item => line_item %>
+              <%= render 'shared/cart_line_item' , product: line_item.product , line_item: line_item %>
             <% end %>
             <tr>
               <td></td>

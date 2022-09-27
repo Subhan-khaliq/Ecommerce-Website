@@ -4,5 +4,4 @@ class Coupon < ApplicationRecord
   has_many :orders
 
   validates :code, uniqueness: true
-
 end

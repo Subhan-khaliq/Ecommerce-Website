@@ -60,6 +60,7 @@ class LineItemsController < ApplicationController
       @line_item.quantity = 1
     end
   end
+
   def set_line_item
     @line_item = LineItem.find(params[:id])
   end

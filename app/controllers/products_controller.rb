@@ -22,11 +22,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.build(product_params)
-    if @product.save
-      redirect_to @product
-    else
-      render :new
-    end
+    @product.save
+  rescue StandardError
+    render :new
+  else
+    redirect_to @product
   end
 
   def update
@@ -40,6 +40,9 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
+  rescue StandardError
+    flash[:alert] = 'Something worng, try again'
+  else
     redirect_to products_path
   end
 

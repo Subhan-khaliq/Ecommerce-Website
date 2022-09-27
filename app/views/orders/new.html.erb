@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <% if logged_in? %>
+  <% if current_user %>
     <div class="actions">
       <%= f.submit 'Place Order' %>
     </div>
