@@ -27,37 +27,37 @@
                 <td><%= product.price %></td>
                 <td><%= product.quantity %></td>
                 <td><%= link_to 'Show', product %></td>
-                <td><% if !@current_cart.products.include?(product) %>
-                <%=button_to line_items_path(product_id: product.id), class: "btn btn-warning" , style: "margin-top:15px;" , params:{productID: product.id} do %>
-                <i class="glyphicon glyphicon-plus" style="color:black;"></i>
-                Add to Cart
+                <td><% if @current_cart.products.include?(product) %>
+                  <ul class="users">
+                    <%=link_to line_item_reduce_path(id: @current_cart.line_items.find_by(product_id: product.id)) , method: :post, remote: true, class: "btn btn-danger" , style: "margin-top:15px;" do %>
+                    <i class="glyphicon glyphicon-minus" style="color:black;"></i>
+                    Reduce
                     <% end %>
 
-              <%else %>
-                <ul class="users">
-                  <%=link_to line_item_reduce_path(id: @current_cart.line_items.find_by(product_id: product.id)) , method: :post, remote: true, class: "btn btn-danger" , style: "margin-top:15px;" do %>
-                  <i class="glyphicon glyphicon-minus" style="color:black;"></i>
-                  Reduce
-                <% end %>
+                    <!-- add -->
+                    <%=link_to line_item_add_path(id: @current_cart.line_items.find_by(product_id: product.id)) , method: :post, remote: true, class: "btn btn-success" , style: "margin-top:15px;" do %>
+                    <i class="glyphicon glyphicon-plus" style="color:black;"></i>
+                    Add
+                    <% end %>
 
-                <!-- add -->
-                <%=link_to line_item_add_path(id: @current_cart.line_items.find_by(product_id: product.id)) , method: :post, remote: true, class: "btn btn-success" , style: "margin-top:15px;" do %>
-                <i class="glyphicon glyphicon-plus" style="color:black;"></i>
-                Add
-              <% end %>
+                    <!-- Remove -->
+                    <%=link_to line_item_path(@current_cart.line_items.find_by(product_id: product.id)) ,method: :delete, remote: true, class: "btn btn-warning" , style: "margin-top:15px;" do %>
+                    <i class="glyphicon glyphicon-remove" style="color:black;"></i>
+                    Remove Item
+                    <% end %>
+                    <li>Quantity:
+                    <%= @current_cart.line_items.find_by(product_id: product.id).quantity %>
+                    | Total Price:
+                    <%= number_to_currency(@current_cart.line_items.find_by(product_id: product.id).total_price) %>
+                    <hr class="style18"/>
+                    </li>
 
-              <!-- Remove -->
-              <%=link_to line_item_path(@current_cart.line_items.find_by(product_id: product.id)) ,method: :delete, remote: true, class: "btn btn-warning" , style: "margin-top:15px;" do %>
-              <i class="glyphicon glyphicon-remove" style="color:black;"></i>
-              Remove Item
-            <% end %>
+                      <%else %>
+                          <%=button_to line_items_path(product_id: product.id), class: "btn btn-warning" , style: "margin-top:15px;" , params:{productID: product.id} do %>
+                          <i class="glyphicon glyphicon-plus" style="color:black;"></i>
+                          Add to Cart
+                      <% end %>
 
-            <li>Quantity:
-              <%= @current_cart.line_items.find_by(product_id: product.id).quantity %>
-              | Total Price:
-              <%= number_to_currency(@current_cart.line_items.find_by(product_id: product.id).total_price) %>
-              <hr class="style18"/>
-            </li>
           </ul>
         <% end %>
       <% end %>

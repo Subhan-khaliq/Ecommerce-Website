@@ -18,8 +18,8 @@ class OrdersController < ApplicationController
     @order = Order.new
     # authorize @order
     @order.update(user_id: current_user.id)
-    add_line_items_to_order
     @order.sub_total = @current_cart.total_amount
+    add_line_items_to_order
     @order.save!
     reset_sessions_cart
     redirect_to order_path(@order)
@@ -30,7 +30,6 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to orders_path }
       format.json { head :no_content }
-      flash[:info] = 'Order was successfully destroyed.'
     end
   end
 
@@ -42,30 +41,30 @@ class OrdersController < ApplicationController
   end
 
   def apply_coupons
-    @coupon = Coupon.find_by(code: params[:x])
-    after_discount = @order.sub_total - @order.percent_of(@coupon.discount, @order.sub_total)
-    @order.update(sub_total: after_discount)
-    redirect_back(fallback_location: @order)
+    result = OrdersManager::ApplyCoupons.new(
+      promo_code: params[:promo_code],
+      order: @order
+    ).call
+
+    if result.success?
+      redirect_back(fallback_location: @order)
+    else
+      render error: result.errors
+    end
   end
 
   private
 
   def add_line_items_to_order
-    @current_cart.line_items.each do |item|
-      item.cart_id = nil
-      item.order_id = @order.id
-      item.save
-      @order.line_items << item
-    end
+    @current_cart.line_items.update_all(order_id: @order.id, cart_id: nil)
   end
 
   def reset_sessions_cart
-    Cart.destroy(session[:cart_id])
     session[:cart_id] = nil
   end
 
   def order_params
-    params.require(:order).permit(:user_id, :sub_total, :code)
+    params.require(:order).permit(:user_id, :sub_total)
   end
 
   def set_order

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  Image_Size = '150x150!'
+  IMAGE_SIZE = '150x150!'
 
   rolify
 
@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   def avatar_thumbnail
     if avatar.attached?
-      avatar.variant(resize: Image_Size).processed
+      avatar.variant(resize: IMAGE_SIZE).processed
 
     else
       '/default_image.jpg'

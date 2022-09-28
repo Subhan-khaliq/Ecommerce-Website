@@ -1,0 +1,14 @@
+one:
+  id: 1
+  name: "Iphone"
+  quantity : 30
+
+two:
+  id: 2
+  name: "DELL"
+  quantity : 40
+
+three:
+  id: 3
+  name: "Mi Band 4"
+  quantity : 50

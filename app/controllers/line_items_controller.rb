@@ -22,7 +22,7 @@ class LineItemsController < ApplicationController
   end
 
   def add_quantity
-    result = LineItemsQuantity.new(
+    result = LineItemsManager::LineItemsAddQuantity.new(
       id: params[:id]
     ).call
 
@@ -34,12 +34,14 @@ class LineItemsController < ApplicationController
   end
 
   def reduce_quantity
-    if @line_item.quantity > 1
-      @line_item.quantity -= 1
-      @line_item.save
+    result = LineItemsManager::LineItemsReduceQuantity.new(
+      id: params[:id]
+    ).call
+
+    if result.success?
       redirect_back(fallback_location: @current_cart)
-    elsif @line_item.quantity == 1
-      destroy
+    else
+      render error: result.errors
     end
   end
 
@@ -50,15 +52,7 @@ class LineItemsController < ApplicationController
   end
 
   def add_items_to_cart(chosen_product)
-    if @current_cart.products.include?(chosen_product)
-      @line_item = @current_cart.line_items.find_by(product_id: chosen_product)
-      @line_item.quantity += 1
-    else
-      @line_item = LineItem.new
-      @line_item.cart = @current_cart
-      @line_item.product = chosen_product
-      @line_item.quantity = 1
-    end
+    @line_item = @current_cart.line_items.create(product: chosen_product)
   end
 
   def set_line_item

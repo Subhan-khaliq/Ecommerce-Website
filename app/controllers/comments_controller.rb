@@ -38,8 +38,7 @@ class CommentsController < ApplicationController
         format.js
       end
     else
-      flash[:alert] = 'Something worng, try again'
-      redirect_to @product
+      redirect_to @product, notice: 'Something went wrong.'
     end
   end
 

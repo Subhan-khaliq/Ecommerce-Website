@@ -2,8 +2,8 @@
 <%= render 'order', order: @order %>
 <h3>Coupons</h3>
 <%= form_tag(apply_coupon_path(@order)) do %>
-   <%= label_tag(:x, "Add Promo Code") %>
-   <%= text_field_tag(:x) %>
+   <%= label_tag(:promo_code, "Add Promo Code") %>
+   <%= text_field_tag(:promo_code) %>
    <%= submit_tag("Apply") %>
 <% end %>
 <%= link_to 'Payment', new_charge_path %>
