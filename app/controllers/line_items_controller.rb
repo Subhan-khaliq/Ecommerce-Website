@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LineItemsController < ApplicationController
-  before_action :set_line_item, only: %i[destroy reduce_quantity]
+  before_action :set_line_item, only: %i[destroy reduce_quantity add_quantity]
 
   def create
     chosen_product = Product.find(params[:product_id])
@@ -23,7 +23,8 @@ class LineItemsController < ApplicationController
 
   def add_quantity
     result = LineItemsManager::LineItemsAddQuantity.new(
-      id: params[:id]
+      id: params[:id],
+      product: @product
     ).call
 
     if result.success?
@@ -57,5 +58,6 @@ class LineItemsController < ApplicationController
 
   def set_line_item
     @line_item = LineItem.find(params[:id])
+    @product = Product.find(@line_item.product_id)
   end
 end

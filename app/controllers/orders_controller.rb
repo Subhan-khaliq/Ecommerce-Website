@@ -56,6 +56,13 @@ class OrdersController < ApplicationController
   private
 
   def add_line_items_to_order
+    @current_cart.line_items.each do |item|
+      @product = Product.find(item.product_id)
+      @product.update(quantity: @product.quantity - item.quantity)
+      if @product.quantity.zero?
+        @product.destroy
+      end
+    end
     @current_cart.line_items.update_all(order_id: @order.id, cart_id: nil)
   end
 

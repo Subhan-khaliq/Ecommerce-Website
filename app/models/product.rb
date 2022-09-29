@@ -7,9 +7,9 @@ class Product < ApplicationRecord
 
   resourcify
 
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   has_many :line_items, dependent: :destroy
   has_many :orders, through: :line_items

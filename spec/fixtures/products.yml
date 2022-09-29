@@ -1,14 +1,23 @@
 one:
   id: 1
   name: "Iphone"
-  quantity : 30
+  quantity: 30
+  user_id: 1
+  serial_number: "Iphone-1"
+  slug: "iphone-1"
 
 two:
   id: 2
   name: "DELL"
-  quantity : 40
+  quantity: 40
+  user_id: 2
+  serial_number: "DELL-2"
+  slug: "dell-2"
 
 three:
   id: 3
   name: "Mi Band 4"
-  quantity : 50
+  quantity: 50
+  user_id: 3
+  serial_number: "Mi Band 4-3"
+  slug: "mi-band-4"

@@ -33,9 +33,11 @@
     <%= render partial: "comments/comment", locals: {product: @product} %>
   </div>
 
+<% if !current_user.is_writer?(current_user.id, @product.user_id) %>
   <div id="comment-form">
     <%= render partial: "comments/form", locals: {product_id: @product.id} %>
   </div>
+<% end %>
 </p>
 
 <% if current_user.is_writer?(current_user.id, @product.user_id) %>

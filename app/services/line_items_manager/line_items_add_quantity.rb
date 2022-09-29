@@ -2,8 +2,9 @@
 
 module LineItemsManager
   class LineItemsAddQuantity
-    def initialize(params)
-      @id = params[:id]
+    def initialize(id:, product:)
+      @id = id
+      @product = product
     end
 
     def call
@@ -18,8 +19,10 @@ module LineItemsManager
 
     def add_quantity
       @line_item = LineItem.find(@id)
-      @line_item.quantity += 1
-      @line_item.save
+      if @line_item.quantity < @product.quantity
+        @line_item.quantity += 1
+        @line_item.save
+      end
     end
   end
 end
