@@ -65,6 +65,7 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+gem 'simplecov', require: false, group: :test
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
@@ -78,5 +79,5 @@ gem 'mysql2', '~> 0.4', platform: :ruby
 gem 'rolify'
 gem 'stripe'
 gem 'thinking-sphinx', '~> 5.4'
-
+gem 'presenter-rails'
 gem 'pundit', '~> 2.2'

@@ -1,3 +1,4 @@
+<% presenter = ProductPresenter.new(product) %>
 <section class="jumbotron text-center">
   <div class="container">
     <h1 class="jumbotron-heading">Products</h1>
@@ -20,12 +21,12 @@
             </tr>
           </thead>
           <tbody>
-            <% @products.each do |product| %>
+            <% presenter @products do |product_presenter| %>
             <tr>
-                <td><%= product.serial_number %></td>
-                <td><%= product.name %></td>
-                <td><%= product.price %></td>
-                <td><%= product.quantity %></td>
+                <td><%= product_presenter.serial_number %></td>
+                <td><%= product_presenter.name %></td>
+                <td><%= product_presenter.price %></td>
+                <td><%= product_presenter.quantity %></td>
                 <td><%= link_to 'Show', product %></td>
                 <td><% if @current_cart.products.include?(product) %>
                   <ul class="users">
