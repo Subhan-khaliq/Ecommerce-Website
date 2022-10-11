@@ -1,58 +1,58 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy ]
+  require 'thinking_sphinx'
 
-  # GET /products or /products.json
+  before_action :set_product, only: %i[show edit update destroy]
+
   def index
-    @products = Product.all
+    @products = Product.search(params[:search], field_weights: { name: 20, content: 10 })
   end
 
-  # GET /products/1 or /products/1.json
   def show
+    @comments = @product.comments
+    @comment = Comment.new
   end
 
-  # GET /products/new
   def new
     @product = Product.new
   end
 
-  # GET /products/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /products or /products.json
   def create
     @product = current_user.products.build(product_params)
-    if @product.save
-      redirect_to @product
-    else
-      render 'new'
-    end
+    @product.save
+  rescue StandardError
+    render :new
+  else
+    redirect_to @product
   end
 
-  # PATCH/PUT /products/1 or /products/1.json
   def update
+    # authorize @product
     if @product.update(product_params)
       redirect_to @product
     else
-      render 'edit'
+      render :edit
     end
   end
 
-  # DELETE /products/1 or /products/1.json
   def destroy
     @product.destroy
+  rescue StandardError
+    flash[:alert] = 'Something worng, try again'
+  else
     redirect_to products_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.friendly.find(params[:id])
-    end
 
+  def set_product
+    @product = Product.friendly.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def product_params
-      params.require(:product).permit(:name, :price, :user_id, :serial_number, :quantity, images: [])
-    end
+  def product_params
+    params.require(:product).permit(:name, :price, :user_id, :serial_number, :quantity, images: [])
+  end
 end

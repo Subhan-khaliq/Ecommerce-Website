@@ -1,0 +1,36 @@
+<h3>
+  Order ID
+  <%= order.id %>
+  , User ID
+  <%= order.user_id %></h3>
+<p>
+  <strong>Name:</strong>
+  <%= User.find_by(id: order.user_id).full_name %>
+<p>
+  <h3>Total price:
+    <%= number_to_currency(order.sub_total) %></h3>
+</p>
+
+<button type="button" class="btn btn-success" data-toggle="collapse" data-target="#<%= order.id %>">Show Items</button>
+<div id="<%= order.id %>" class="collapse">
+  <ul class="users">
+    <% order.line_items.each do |item| %>
+      <%= item.quantity %>
+      x
+      <%= render 'shared/order_product' , product: item.product %>
+    <% end %>
+    <br/>
+  </ul>
+</div>
+
+  <%= link_to edit_order_path(order) do %>
+  <i class="glyphicon glyphicon-pencil" style="color:darkgray"></i>
+  Edit
+
+<%= link_to order, method: :delete, data: { confirm: 'Are you sure?' } do %>
+<i class="glyphicon glyphicon-fire" style="color:firebrick"></i>
+Destroy
+<% end %>
+<% end %>
+
+<hr/>

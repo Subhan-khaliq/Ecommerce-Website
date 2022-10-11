@@ -1,0 +1,7 @@
+<%= form_for [@product, Comment.new], remote: true do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, class: "form-control", placeholder: "Add a comment" %>
+  </div>
+  <%= f.submit %>
+<% end %>
+

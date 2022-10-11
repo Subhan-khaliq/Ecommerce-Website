@@ -14,6 +14,10 @@
              <% end %>
             </div>
             <div class="field">
+            <%= f.label 'Role'%>
+            <%= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
+            </div>
+            <div class="field">
             <%= f.label :first_name, 'First Name' %>
             <%= f.text_field :first_name %>
           </div>
@@ -37,6 +41,7 @@
             <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
           </div>
+
           <div class="actions">
             <%= f.submit "Sign up", class: 'btn btn-lg btn-primary btn-block'%>
           </div>

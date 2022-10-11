@@ -1,0 +1,20 @@
+<div class="center jumbotron">
+
+
+<p>
+  <h3>Total price:
+  <%= number_to_currency(@order.sub_total) %></h3>
+</p>
+
+<button type="button" class="btn btn-success" data-toggle="collapse" aria-expanded="true" data-target="#<%= @order.id %>">Show/Hide Items</button>
+<div id="<%= @order.id %>" class="collapse in">
+  <ul class="users">
+    <% @order.line_items.each do |item| %>
+      <%= item.quantity %>
+      x
+      <%= render 'shared/order_product' , product: item.product%>
+    <% end %>
+    <br/>
+  </ul>
+</div>
+</div>
