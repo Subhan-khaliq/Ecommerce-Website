@@ -6,7 +6,8 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
-    @products = Product.search(params[:search], field_weights: { name: 20, content: 10 })
+    # @products = Product.search(params[:search], field_weights: { name: 20, content: 10 })
+    @products = Product.all
   end
 
   def show

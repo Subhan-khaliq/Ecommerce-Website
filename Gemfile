@@ -81,3 +81,4 @@ gem 'stripe'
 gem 'thinking-sphinx', '~> 5.4'
 gem 'presenter-rails'
 gem 'pundit', '~> 2.2'
+gem 'rails_12factor', group: :production
