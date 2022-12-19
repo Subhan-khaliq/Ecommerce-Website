@@ -17,5 +17,7 @@ test:
 
 production:
   <<: *default
-  database: ecommerce_production
+  database: hello_world
+  username: hello_world
+  password: hello_world
   

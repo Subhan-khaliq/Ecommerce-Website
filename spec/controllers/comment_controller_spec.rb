@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
   describe ' controller test cases ' do
-    
+
     fixtures :comments
     let(:comment1) { comments(:one) }
     let(:comment2) { comments(:two) }
