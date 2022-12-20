@@ -337,6 +337,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
+  ffi
   friendly_id (~> 5.4.0)
   image_processing
   jbuilder (~> 2.7)
