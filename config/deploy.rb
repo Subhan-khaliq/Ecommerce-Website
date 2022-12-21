@@ -12,9 +12,14 @@ set :rails_env, 'production'
 set :keep_releases, 5
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :rbenv_type, :user
-set :rbenv_ruby, "2.7.6"
 set :user, 'deploy'
+set :use_sudo, true
+
+set :rbenv_type, :user
+set :rbenv_ruby, '2.7.6'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
 
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
