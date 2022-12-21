@@ -9,7 +9,7 @@
 
 set :rails_env, 'staging'
 set :puma_env, fetch(:rack_env, fetch(:rails_env, 'staging'))
-server '172-31-29-40', user: 'deploy', roles: %w{web app db}
+server '54.167.13.129', user: 'deploy', roles: %w{web app db}
 
 # role-based syntax
 # ==================
