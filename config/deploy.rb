@@ -8,7 +8,7 @@ set :deploy_to, '/home/deploy/Ecommerce-Website'
 set :pty, true
 set :linked_files, %w{config/database.yml config/application.yml} #if rails 5.2 & above master.key is used insted of application.yml
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
-set :keep_releases, 7
+set :keep_releases, 5
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :rbenv_type, :user
