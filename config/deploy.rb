@@ -8,12 +8,14 @@ set :deploy_to, '/home/deploy/Ecommerce-Website'
 set :pty, true
 set :linked_files, %w{config/database.yml config/application.yml} #if rails 5.2 & above master.key is used insted of application.yml
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+set :rails_env, 'production'
 set :keep_releases, 5
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :rbenv_type, :user
 set :rbenv_ruby, "2.7.6"
 set :user, 'deploy'
+
 append :rbenv_map_bins, 'puma', 'pumactl'
 
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
