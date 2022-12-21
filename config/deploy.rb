@@ -14,7 +14,7 @@ set :keep_releases, 5
 set :rbenv_type, :user
 set :rbenv_ruby, "2.7.6"
 set :user, 'deploy'
-append :rvm_map_bins, 'puma', 'pumactl'
+append :rbenv_map_bins, 'puma', 'pumactl'
 
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
