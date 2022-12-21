@@ -13,6 +13,7 @@ set :keep_releases, 7
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :rbenv_type, :user
 set :rbenv_ruby, "2.7.6"
+set :user, 'deploy'
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
 
