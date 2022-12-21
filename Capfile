@@ -13,15 +13,14 @@ require "capistrano/deploy"
 # install_plugin Capistrano::SCM::Svn
 # or
 set :rbenv_ruby, "2.7.6"
-require 'capistrano/puma'  # Default puma tasks
-install_plugin Capistrano::Puma
-install_plugin Capistrano::Puma::Nginx
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 require 'capistrano/bundler'
 require 'capistrano/rbenv'
 require 'capistrano/rails/assets' # for asset handling add
 require 'capistrano/rails/migrations' # for running migrations
+require 'capistrano/puma'  # Default puma tasks
+install_plugin Capistrano::Puma
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
