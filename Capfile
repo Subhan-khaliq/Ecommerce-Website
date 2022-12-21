@@ -21,6 +21,7 @@ require 'capistrano/rails/assets' # for asset handling add
 require 'capistrano/rails/migrations' # for running migrations
 require 'capistrano/puma'  # Default puma tasks
 install_plugin Capistrano::Puma
+install_plugin Capistrano::Puma::Daemon
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
