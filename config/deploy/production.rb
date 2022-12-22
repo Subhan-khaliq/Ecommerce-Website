@@ -8,7 +8,7 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 set :rails_env, 'production'
 set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
-server '35.175.198.229', user: 'deploy', roles: %w{web app db}
+server '54.210.218.211', user: 'deploy', roles: %w{web app db}
 
 
 
