@@ -21,6 +21,7 @@ require 'capistrano/puma'
 require 'capistrano/rails/assets' # for asset handling add
 require 'capistrano/rails/migrations' # for running migrations
 require 'capistrano/puma/nginx' # Default puma tasks
+require 'sshkit/sudo'
 install_plugin Capistrano::Puma::Systemd
 install_plugin Capistrano::Puma
 # Include tasks from other gems included in your Gemfile

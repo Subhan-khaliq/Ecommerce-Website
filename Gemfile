@@ -83,7 +83,7 @@ gem 'presenter-rails'
 gem 'pundit', '~> 2.2'
 gem 'rails_12factor', group: :production
 gem 'ffi',  :platforms => :ruby
-gem 'puma-daemon', '~> 0.1.2'
+gem 'sshkit-sudo'
 
 group :development do
   gem 'capistrano'
