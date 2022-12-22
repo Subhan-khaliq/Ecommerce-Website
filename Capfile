@@ -15,10 +15,10 @@ require "capistrano/deploy"
 set :rbenv_ruby, "2.7.6"
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
-install_plugin Capistrano::Puma::Daemon
 require 'capistrano/bundler'
 require 'capistrano/rbenv'
 require 'capistrano/puma' 
+install_plugin Capistrano::Puma::Daemon
 require 'capistrano/rails/assets' # for asset handling add
 require 'capistrano/rails/migrations' # for running migrations
 require 'capistrano/puma/nginx' # Default puma tasks
