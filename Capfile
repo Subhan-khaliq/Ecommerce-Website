@@ -17,9 +17,9 @@ require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 require 'capistrano/bundler'
 require 'capistrano/rbenv'
+require 'capistrano/puma' 
 require 'capistrano/rails/assets' # for asset handling add
 require 'capistrano/rails/migrations' # for running migrations
-require 'capistrano/puma' 
 require 'capistrano/puma/nginx' # Default puma tasks
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Daemon
