@@ -6,10 +6,10 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-
+ask(:password, nil, echo: false)
 set :rails_env, 'production'
 set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
-server '35.175.198.229', user: 'deploy', roles: %w{web app db}
+server '35.175.198.229', user: 'deploy', roles: %w{web app db}, password: fetch(:password)
 
 
 
