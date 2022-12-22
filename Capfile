@@ -18,10 +18,10 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/bundler'
 require 'capistrano/rbenv'
 require 'capistrano/puma'
-install_plugin Capistrano::Puma::Daemon 
 require 'capistrano/rails/assets' # for asset handling add
 require 'capistrano/rails/migrations' # for running migrations
 require 'capistrano/puma/nginx' # Default puma tasks
+install_plugin Capistrano::Puma::Daemon 
 # install_plugin Capistrano::Puma
 # Include tasks from other gems included in your Gemfile
 #
